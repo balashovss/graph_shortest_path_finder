@@ -23,12 +23,29 @@ int main() {
             map[i][j] = rand()%2; 
         }//0 is for wall, 1 is for mov
     }
-    for (int i = 0; i <height; i++) {
+    for (int i = 1; i < height-1; i++) {
+        for (int j = 1; j < width-1; j++) {
+            if (map[i][j] == MOVABLE) {
+                int flag = 0;
+                for (int k = -1; k < 2; k++) {
+                    for (int z = -1; z < 2; z++) {
+                        if (!(k == 0 && z == 0)) flag = map[i+k][j+z] == MOVABLE;
+                    }
+                }
+                if (!flag) {
+                    int tmp = rand()%8 + 1;
+                    
+            }
+        }
+    }
+    //Вывод
+    for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             printf("%d ",map[i][j]); 
         }//0 is for wall, 1 is for mov
         printf("\n");
     }
+    //Высвобождение памяти
     for (int i = 0; i < width; i++) {
         free(map[i]);
     }
