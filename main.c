@@ -5,7 +5,56 @@ typedef enum cell{
     WALL,
     MOVABLE
 }cell;
-//#include <iostream>
+cell** create_matrix( int height, int width) {
+    cell** map = (cell**) malloc(sizeof(cell*) * height);
+    for (int i = 0; i < height; i++) {
+        map[i] = (cell*) malloc(sizeof(cell) * width);
+    }
+    return map;
+}
+void fill_map(cell** map, int height, int width, int alive_probability) {
+    srand(time(NULL));
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if (rand()%100 < alive_probability) map[i][j] = MOVABLE;
+        }//0 is for wall, 1 is for mov
+    }
+}
+void matrix_print(cell** map, int height, int width) {
+    int flag = 0;
+    for (int i = 0; ((i < height) && (!flag)); i++) {
+        for (int j = 0; ((j < width) && (!flag)); j++) {
+            switch (map[i][j]){ 
+                case WALL: printf("0");
+                break;
+                case MOVABLE:printf(" ");
+                break;
+                default: 
+                flag = 1;
+                break;
+            }    
+        }//0 is for wall, 1 is for mov
+        printf("\n");
+    }
+}
+void free_matrix(cell*** map, int height) {
+    if (map != NULL) {
+    for (int i = 0; i < height; i++) {
+        free((*map)[i]);
+    }
+    free(*map);
+    }
+}
+int aliveNeighbours(cell** map, int height, int width, int i, int j) {
+    int alive_counter = 0;
+    for (int k = -1; k < 2; k++) {
+        for (int l = -1; l < 2; l++) {
+            if ((k == 0 && l == 0) || (i + k < 0) || (i + k >= height) || (j + l < 0) || (j + l >= width)) continue;
+            if (map[i + k][j + l] == MOVABLE) alive_counter++;
+        }
+    }
+    return alive_counter;
+}
 int main() {
     int width, height;
     printf("Введите размеры карты как два целых числа(ширина, высота) c любым разделителем(не выходите пж за пределы оперативки)\n");
@@ -13,51 +62,11 @@ int main() {
         printf("n/a");
     }
     else {
-    cell** map = (cell**) malloc(sizeof(cell*) * height);
-    for (int i = 0; i < width; i++) {
-        map[i] = (cell*) malloc(sizeof(cell)*width);
-    }
-    srand(time(NULL));
-    for (int i = 0; i <height; i++) {
-        for (int j = 0; j < width; j++) {
-            map[i][j] = rand()%2; 
-        }//0 is for wall, 1 is for mov
-    }
-    for (int i = 1; i < height-1; i++) {
-        for (int j = 1; j < width-1; j++) {
-            if (map[i][j] == MOVABLE) {
-                int flag = 0;
-                for (int k = -1; k < 2; k++) {
-                    for (int z = -1; z < 2; z++) {
-                        if (!(k == 0 && z == 0)) flag = map[i+k][j+z] == MOVABLE;
-                    }
-                }
-                if (!flag) {
-                    int tmp_x = rand()%3 - 1;
-                    int tmp_y = rand()%3 - 1;
-                    if (tmp_x == 0 && tmp_y == 0) tmp_x++;
-                    map[i+tmp_x][j+tmp_y] = MOVABLE;
-                }
-            }
-        }
-    }
-    //Вывод
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            switch (map[i][j]){ 
-                case WALL: printf("0");
-                break;
-                case MOVABLE:printf(" ");
-                break;
-                }    
-        }//0 is for wall, 1 is for mov
-        printf("\n");
-    }
-    //Высвобождение памяти
-    for (int i = 0; i < width; i++) {
-        free(map[i]);
-    }
-    free(map);
+    cell** map = create_matrix(height, width);
+    int alive_probability = 45;
+    fill_map(map, height, width, alive_probability);
+    matrix_print(map, height, width);
+    free_matrix(&map, height);
     //FILE* fptr = fopen("maps/maps.txt", "a+");
     }
     return 0;
