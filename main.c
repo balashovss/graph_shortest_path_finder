@@ -33,15 +33,23 @@ int main() {
                     }
                 }
                 if (!flag) {
-                    int tmp = rand()%8 + 1;
-                    
+                    int tmp_x = rand()%3 - 1;
+                    int tmp_y = rand()%3 - 1;
+                    if (tmp_x == 0 && tmp_y == 0) tmp_x++;
+                    map[i+tmp_x][j+tmp_y] = MOVABLE;
+                }
             }
         }
     }
     //Вывод
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            printf("%d ",map[i][j]); 
+            switch (map[i][j]){ 
+                case WALL: printf("0");
+                break;
+                case MOVABLE:printf(" ");
+                break;
+                }    
         }//0 is for wall, 1 is for mov
         printf("\n");
     }
