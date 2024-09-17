@@ -57,8 +57,9 @@ int aliveNeighbours(cell** map, int height, int width, int i, int j) {
 }
 int main() {
     int width, height;
+    char c;
     printf("Введите размеры карты как два целых числа(ширина, высота) c любым разделителем(не выходите пж за пределы оперативки)\n");
-    if (scanf("%d %d",&width, &height) != 2) {
+    if (scanf("%d %c %d",&width, &c, &height) != 3) {
         printf("n/a");
     }
     else {
