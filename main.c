@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #define ALIVE_PROBABILITY 45
+#define SURVIVING 2
+#define BIRTHING 3
 typedef enum cell{
     WALL,
     MOVABLE
@@ -30,7 +32,7 @@ void fill_map(cell** map, int height, int width) {
         }//0 is for wall, 1 is for mov
     }
 }
-void matrix_print(cell** map, int height, int width) {
+void maze_print(cell** map, int height, int width) {
     int flag = 0;
     for (int i = -1; ((i <= height) && (!flag)); i++) {
         for (int j = -1; ((j <= width) && (!flag)); j++) {
@@ -84,11 +86,11 @@ int aliveNeighbours(cell** map, int height, int width, int i, int j) {
 void checkAliveness(cell** map, cell** next_iteration_map_, int i, int j, int height, int width) {
     int aliveNeighbours_ = aliveNeighbours(map, height, width, i, j);
     if (map[i][j] == WALL) {
-        if (aliveNeighbours_ == 2) next_iteration_map_[i][j] = WALL;
+        if (aliveNeighbours_ == SURVIVING) next_iteration_map_[i][j] = WALL;
         else next_iteration_map_[i][j] = MOVABLE;
     }
     else {
-        if (aliveNeighbours_ == 2) next_iteration_map_[i][j] = WALL;
+        if (aliveNeighbours_ == BIRTHING) next_iteration_map_[i][j] = WALL;
         else next_iteration_map_[i][j] = MOVABLE;
     }
 }
@@ -105,12 +107,12 @@ cell** next_iteration_map(cell** map, int height, int width) {
 void cellularAutomataCycle(cell** map, int height, int width) {
     int number_of_iterations = 2;
     for (int i = 0; i < number_of_iterations; i++) {
-        matrix_print(map, height, width);
+        maze_print(map, height, width);
         map = next_iteration_map(map, height, width);
     }
     map[0][0] = MOVABLE;
     map[height - 1][width - 1] = MOVABLE;
-    matrix_print(map, height, width);
+    maze_print(map, height, width);
 }
 int main() {
     int width, height;
