@@ -55,6 +55,24 @@ int aliveNeighbours(cell** map, int height, int width, int i, int j) {
     }
     return alive_counter;
 }
+cell** next_iteration_map(cell** map, int height, int width) {
+    cell** next_iteration_map_ = NULL;
+    fill_map(next_iteration_map_, height, width, 0);
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            int aliveNeighbours_ = aliveNeighbours(map, height, width, i, j);
+            if (map[i][j] == WALL) {
+                if ((aliveNeighbours_ == 2) || (aliveNeighbours_ == 3)) next_iteration_map_[i][j] = WALL;
+                else next_iteration_map_[i][j] = MOVABLE;
+            }
+            else {
+                if (aliveNeighbours_ == 3) next_iteration_map_[i][j] = WALL;
+                else next_iteration_map_[i][j] = MOVABLE;
+            }
+        }
+    }
+    return next_iteration_map_;
+}
 int main() {
     int width, height;
     char c;
