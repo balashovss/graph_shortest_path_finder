@@ -19,5 +19,3 @@ void check_aliveness(cell** map, cell** next_iteration_map_, int i, int j, int h
 void next_iteration_map(cell** map, int height, int width);
 void cellular_automata_cycle(cell** map, int height, int width);
 cell** generate_maze(int* height, int* width);
-
-

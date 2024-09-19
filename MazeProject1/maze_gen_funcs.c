@@ -71,7 +71,7 @@ void cellular_automata_cycle(cell** map, int height, int width) {
 cell** generate_maze(int* height, int* width) {
     printf("Введите размеры карты как два целых числа(ширина, высота) c любым разделителем(не выходите пж за пределы оперативки)\n");
     cell** map = NULL;
-    if (scanf("%d%d",width, height) != 2) {
+    if ((scanf("%d%d",width, height) != 2) || (*width <= 0) || (*height <= 0)) {
         printf("n/a");
     }
     else {
