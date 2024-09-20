@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "map": "c",
+        "maze_gen_funcs.h": "c"
+    }
+}
