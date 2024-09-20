@@ -60,15 +60,15 @@ void next_iteration_map(cell** map, int height, int width) {
 void cellular_automata_cycle(cell** map, int height, int width) {
     //int number_of_iterations = 3;
     while (aliveness_counter(map,height,width) >= NEEDED_NUMBER_OF_WALLS){
-        maze_print(map, height, width);
+        cave_print(map, height, width);
         next_iteration_map(map, height, width);
     }
     map[0][0] = MOVABLE;
     map[height - 1][width - 1] = MOVABLE;
     printf("Исходный лабиринт:\n");
-    maze_print(map, height, width);
+    cave_print(map, height, width);
 }
-cell** generate_maze(int* height, int* width, int type) {
+void** generate_maze(int* height, int* width, int type) {
     cell** map = NULL;
     printf("Введите размеры карты как два целых числа(ширина, высота) c любым разделителем(не выходите пж за пределы оперативки)\n");
     if ((scanf("%d%d",width, height) != 2) || (*width <= 0) || (*height <= 0)) {
@@ -90,10 +90,10 @@ cell** generate_maze(int* height, int* width, int type) {
             maze_cell* tmp = (maze_cell*)malloc(sizeof(maze_cell)*(*width));
             maze_cell** map = (maze_cell**)create_matrix((*height), (*width), MAZE_CELL_TYPE);
             srand(time(NULL));
-            for (int i = 0; i < (*height); i++) {
+            for (int i = 0; i < (*height) - 1; i++) {
                 if (i == 0) {
                 for (int j = 0; j < (*width); j++) {
-                    (tmp[j]).set = j+i*(*height);
+                    (tmp[j]).set = 1+j+i*(*height);
                     (tmp[j]).right = MOVABLE;
                     (tmp[j]).bottom = MOVABLE;
                 }
@@ -103,39 +103,52 @@ cell** generate_maze(int* height, int* width, int type) {
                     if ((maybe_right_wall == WALL) || ((tmp[j]).set == (tmp[j+1]).set)) (tmp[j]).right = WALL;
                     else {
                         int temp = (tmp[j+1]).set;
-                        for (k = j+1; k < (*width); k++) {
+                        for (int k = 0; k < (*width); k++) {
                             if ((tmp[k]).set == temp) (tmp[k]).set = (tmp[j]).set; 
                         }
-                    };
+                    }
                 }
+                tmp[(*width) - 1].right = WALL;
                 for (int j = 0; j < (*width); j++) {
                     unsigned char maybe_bottom_wall = (unsigned char)(rand()%2);
                     if (maybe_bottom_wall == WALL) {
-                        int count = 0, counter = j;
-                        while ((counter != 0) && ((tmp[counter]).set == (tmp[counter-1]).set) && (count < 2)) {
-                            if ((tmp[counter]).bottom != WALL) count++;
-                            counter--;
+                        int count = 0;
+                        for (int k = 0; k < (*width);k++) {
+                            if (((tmp[k]).set == (tmp[j]).set) && ((tmp[k]).bottom != WALL)) count++;
                         }
-                        if ((count >= 2) || (counter == j)) (tmp[j]).bottom = WALL; 
+                        if (count >= 2) (tmp[j]).bottom = WALL; 
                     }
                 }
                 for (int j = 0; j < (*width); j++) map[i][j] = tmp[j];
-                if (i != height - 1) {
+                if (i != *height - 2) {
                     for (int j = 0; j < (*width); j++) {
                         (tmp[j]).right = MOVABLE;
                         if ((tmp[j]).bottom == WALL) {
-                            (tmp[j]).set = 0;
+                            (tmp[j]).set = (i+1)*(*height) + j + 1;
                             (tmp[j]).bottom = MOVABLE;
                         }
-
+                    }
                 }
                 else {
-
+                    for (int j = 0; j < (*width) - 1; j++) {
+                        (tmp[j]).bottom = WALL;
+                        if (((tmp[j]).right == WALL) && ((tmp[j]).set != (tmp[j+1]).set)) {
+                            int temp = (tmp[j+1]).set;
+                            for (int k = j+1; k < (*width); k++) {
+                                if ((tmp[k]).set == temp) (tmp[k]).set = (tmp[j]).set; 
+                            }
+                            tmp[j].right = MOVABLE;
+                        }
+                    }
+                    tmp[(*width) - 1].bottom = WALL;
                 }
                 }
-
+                for (int j = 0; j < (*width); j++) {
+                    map[(*height) - 1][j] = tmp[j];
                 }
-
-                }
-    return map;
+                free(tmp);
+                maze_print(map, *height, *width);
+            }
+    return (void**)map;
+    }
 }

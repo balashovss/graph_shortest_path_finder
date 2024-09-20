@@ -27,7 +27,7 @@ void free_matrix(void*** map, int height) {
     free(*map);
     }
 }
-void maze_print(cell** map, int height, int width) {
+void cave_print(cell** map, int height, int width) {
     int flag = 0;
     for (int i = -1; ((i <= height) && (!flag)); i++) {
         for (int j = -1; ((j <= width) && (!flag)); j++) {
@@ -61,4 +61,22 @@ void maze_print(cell** map, int height, int width) {
         printf("\n");
     }
     printf("\n\n\n\n\n");
+}
+void maze_print(maze_cell** map, int height, int width) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if ((map[i][j]).bottom == WALL) printf("_");
+            else printf(" ");
+            if ((map[i][j]).right == WALL) printf("|");
+            else printf(" ");
+        }
+        printf("\n");
+    }
+    printf("\n\n\n\n\n");
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            printf("%d ", map[i][j].set);
+        }
+        printf("\n");
+    }
 }

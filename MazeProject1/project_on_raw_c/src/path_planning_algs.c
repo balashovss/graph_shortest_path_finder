@@ -85,7 +85,7 @@ void wave_algorithm(cell*** map, int height, int width){
             top--;
         }
         (*map)[0][0] = PATH;
-        maze_print(*map, height, width);
+        cave_print(*map, height, width);
         free(stack);
         }
         free_matrix((void***)map, height);
