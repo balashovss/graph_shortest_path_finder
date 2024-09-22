@@ -5,11 +5,11 @@
 void console_app(int type) {
     int height, width;
     if (type == CAVE_GEN) {
-        cell** map = (cell**)generate_maze(&height, &width, CAVE_GEN);
-        wave_algorithm(&map, height, width);
+        cell** map = (cell**)generate_map(&height, &width, CAVE_GEN);
+        wave_algorithm_for_cave(&map, height, width);
     }
     else {
-        maze_cell** map = (maze_cell**)generate_maze(&height, &width, MAZE_GEN);
+        maze_cell** map = (maze_cell**)generate_map(&height, &width, MAZE_GEN);
         free_matrix((void***)(&map), height);
     }
 }

@@ -21,7 +21,7 @@ int** wave_map_init(int height, int width) {
     wave_map[0][0] = 0;
     return wave_map;
 }
-void wave_map_step(int** wave_map, cell** map, int height, int width, int i, int j, int wave_counter, int* flag, int* wave_spreading_counter) {
+void wave_map_step_for_cave(int** wave_map, cell** map, int height, int width, int i, int j, int wave_counter, int* flag, int* wave_spreading_counter) {
     if (wave_map[i][j] == wave_counter) {
         for (int k = -1; k < 2; k++) {
             for (int l = -1; l < 2; l++) {
@@ -35,7 +35,7 @@ void wave_map_step(int** wave_map, cell** map, int height, int width, int i, int
         }
     }
 }
-int wave_map_filling(int** wave_map, cell** map, int height, int width) {
+int wave_map_filling_for_cave(int** wave_map, cell** map, int height, int width) {
     int wave_counter = 0, wave_spreading_counter = 1,flag = 0;
     while ((wave_spreading_counter != 0) && !flag) {
         wave_spreading_counter = 0;
@@ -49,10 +49,10 @@ int wave_map_filling(int** wave_map, cell** map, int height, int width) {
     if (!flag) printf("Путь не найден!\n");
     return flag;
 }
-void wave_algorithm(cell*** map, int height, int width){
+void wave_algorithm_for_cave(cell*** map, int height, int width){
     if (*map != NULL) {
         int** wave_map = wave_map_init(height, width);
-        if (wave_map_filling(wave_map, *map, height, width)) {
+        if (wave_map_filling_for_cave(wave_map, *map, height, width)) {
         print_waves(wave_map, height, width);
         int* stack = (int*)malloc(sizeof(int)*height*width);
         int top = 0;
@@ -92,3 +92,73 @@ void wave_algorithm(cell*** map, int height, int width){
         free_matrix((void***)(&wave_map), height);
     }
 }
+void wave_algorithm_for_maze(maze_cell*** map, int height, int width){
+    if (*map != NULL) {
+        int** wave_map = wave_map_init(height, width);
+        if (wave_map_filling_for_maze(wave_map, *map, height, width)) {
+        print_waves(wave_map, height, width);
+        int* stack = (int*)malloc(sizeof(int)*height*width);
+        int top = 0;
+        stack[top] = -1;
+        int i = height - 1, j = width - 1;
+        while (wave_map[i][j] != 0) {
+            if ((i == height - 1) && (j == width - 1) && (wave_map[i-1][j] == -1) && (wave_map[i][j-1] == -1)) break;
+            else {
+            top++;
+            stack[top] = i*width+j;
+            int flag = 0;
+            if ((i+1 <= height) && (wave_map[i+1][j] == wave_map[i][j] - 1)) {
+                if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
+                i = i+1;
+                flag = 1;
+            }
+            else if ((i-1 >= 0) && (wave_map[i][j+1] == wave_map[i][j] - 1)) {
+                if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
+                i = i-1;
+                flag = 1;
+            }
+            else if ((j+1 <= width) && (wave_map[i][j+1] == wave_map[i][j] - 1)) {
+                if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
+                j = j+1;
+                flag = 1;
+            }
+            else if ((j-1 >= 0) && (wave_map[i][j-1] == wave_map[i][j] - 1)) {
+                if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
+                j = j-1;
+                flag = 1;
+            }
+            if (!flag) {
+            while (stack[top] != -1) top--;
+                i = height - 1;
+                j = width - 1;
+            }
+            }
+        }
+        while ((stack[top] != -1) && (top >= 0)) {
+            if (width >= height)((*map)[stack[top]/width][stack[top]%width]).isPartOfPath = PATH;
+            else ((*map)[stack[top]/height][stack[top]%height]).isPartOfPath = PATH;
+            top--;
+        }
+        ((*map)[0][0]).isPartOfPath = PATH;
+        maze_print(*map, height, width);
+        free(stack);
+        }
+        free_matrix((void***)map, height);
+        free_matrix((void***)(&wave_map), height);
+    }
+}
+int wave_map_filling_for_maze(int** wave_map, maze_cell** map, int height, int width) {
+    int wave_counter = 0, wave_spreading_counter = 1,flag = 0;
+    while ((wave_spreading_counter != 0) && !flag) {
+        wave_spreading_counter = 0;
+        for (int i = 0; i < height; i++){
+            for (int j = 0; j < width; j++) {
+                wave_map_step_for_maze(wave_map,map,height,width,i,j, wave_counter,&flag,&wave_spreading_counter);
+            }
+        }
+        wave_counter++;
+    }
+    if (!flag) printf("Путь не найден!\n");
+    return flag;
+}
+void wave_map_step_for_maze(int** wave_map, maze_cell** map, int height, int width, int i, int j, int wave_counter, int* flag, int* wave_spreading_counter) {}
