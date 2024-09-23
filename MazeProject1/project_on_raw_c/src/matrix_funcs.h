@@ -8,3 +8,4 @@ void** create_matrix(int height, int width, int regime);
 void free_matrix(void*** map, int height);
 void cave_print(cell** map, int height, int width);
 void maze_print(maze_cell** map, int height, int width);
+void maze_path_print(maze_cell** map, int height, int width);

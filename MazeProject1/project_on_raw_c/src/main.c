@@ -10,7 +10,7 @@ void console_app(int type) {
     }
     else {
         maze_cell** map = (maze_cell**)generate_map(&height, &width, MAZE_GEN);
-        free_matrix((void***)(&map), height);
+        wave_algorithm_for_maze(&map, height, width);
     }
 }
 int main(int argc, char* argv[]) {

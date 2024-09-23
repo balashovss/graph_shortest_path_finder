@@ -31,7 +31,7 @@ void generate_cave(void*** map, int height, int width);
 void this_string_to_map(maze_cell* tmp, maze_cell** map, int index, int width);
 void last_maze_string(maze_cell* tmp, int width, int* set_count);
 void string_for_next_cycle(maze_cell* tmp, int width, int* set_count);
-void all_maze_cells_to_one_cell(maze_cell* tmp, int width, int j);
+void all_maze_cells_to_one_set(maze_cell* tmp, int width, int j);
 void string_bottom_wall_add(maze_cell* tmp, int width);
 void string_right_wall_add(maze_cell* tmp, int width);
 void string_init(int* set_count, int height, int width, maze_cell* tmp);

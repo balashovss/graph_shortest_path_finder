@@ -80,3 +80,14 @@ void maze_print(maze_cell** map, int height, int width) {
         printf("\n");
     }
 }
+void maze_path_print(maze_cell** map, int height, int width) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if ((map[i][j]).isPartOfPath == PATH) {
+                printf("X");
+            }
+            else printf(" ");
+        }
+        printf("\n");
+    }
+}

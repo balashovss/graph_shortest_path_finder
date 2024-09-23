@@ -99,8 +99,8 @@ void generate_maze(void*** map, int height, int width) {
     *map = create_matrix(height, width, MAZE_CELL_TYPE);
     srand(time(NULL));
     int set_count = 0;
+    string_init(&set_count, height, width, tmp);
     for (int i = 0; i < height - 1; i++) {
-        if (i == 0) string_init(&set_count, height, width, tmp);
         string_right_wall_add(tmp, width);
         string_bottom_wall_add(tmp, width);
         this_string_to_map(tmp, (maze_cell**)(*map), i, width);
@@ -117,39 +117,39 @@ void string_init(int* set_count, int height, int width, maze_cell* tmp) {
         (tmp+j)->set = (*set_count)++;
         (tmp+j)->right = MOVABLE;
         (tmp+j)->bottom = MOVABLE;
+        (tmp+j)->isPartOfPath = !PATH;
     }
 }
 void string_right_wall_add(maze_cell* tmp, int width) {
     for (int j = 0; j < width - 1; j++) {
-        unsigned char maybe_right_wall = (unsigned char)(rand()%2);
-        if ((maybe_right_wall == WALL) || ((tmp[j]).set == (tmp[j+1]).set)) (tmp[j]).right = WALL;
-        else {
-            all_maze_cells_to_one_cell(tmp, width, j);
-        }
+        int maybe_right_wall = rand()%100;
+        if ((maybe_right_wall > 40) || ((tmp[j]).set == (tmp[j+1]).set)) (tmp[j]).right = WALL;
+        else all_maze_cells_to_one_set(tmp, width, j);
     }
     tmp[width - 1].right = WALL;
 }
 void string_bottom_wall_add(maze_cell* tmp, int width) {
     for (int j = 0; j < width; j++) {    
-        unsigned char maybe_bottom_wall = (unsigned char)(rand()%2);
-        if (maybe_bottom_wall == WALL) {
+        int maybe_bottom_wall = rand()%100;
+        if (maybe_bottom_wall > 40) {
             int count = 0;
-            for (int k = 0; k < width;k++) {
+            for (int k = j; k < width;k++) {
                 if (((tmp[k]).set == (tmp[j]).set) && ((tmp[k]).bottom != WALL)) count++;
             }
             if (count >= 2) (tmp[j]).bottom = WALL; 
         }
     }
 }
-void all_maze_cells_to_one_cell(maze_cell* tmp, int width, int j) {
-    int temp = (tmp[j+1]).set;
+void all_maze_cells_to_one_set(maze_cell* tmp, int width, int j) {
+    int temp = (tmp[j]).set;
     for (int k = j; k < width; k++) if ((tmp[k]).set == temp) (tmp[k]).set = (tmp[j]).set;
 } 
 void string_for_next_cycle(maze_cell* tmp, int width, int* set_count) {
     for (int j = 0; j < width; j++) {
         (tmp[j]).right = MOVABLE;
         if ((tmp[j]).bottom == WALL) {
-            (tmp[j]).set = (*set_count)++;
+            (*set_count)++;
+            (tmp[j]).set = (*set_count);
             (tmp[j]).bottom = MOVABLE;
         }
     }
@@ -157,7 +157,10 @@ void string_for_next_cycle(maze_cell* tmp, int width, int* set_count) {
 void last_maze_string(maze_cell* tmp, int width, int* set_count) {
     for (int j = 0; j < width - 1; j++) {
         (tmp[j]).bottom = WALL;
-        if (((tmp[j]).right == WALL) && ((tmp[j]).set != (tmp[j+1]).set)) tmp[j].right = MOVABLE;
+        if (((tmp[j]).right == WALL) && ((tmp[j]).set != (tmp[j+1]).set)) {
+            tmp[j].right = MOVABLE;
+            all_maze_cells_to_one_set(tmp, width, j);
+        }
     }
     tmp[width - 1].bottom = WALL;
 }

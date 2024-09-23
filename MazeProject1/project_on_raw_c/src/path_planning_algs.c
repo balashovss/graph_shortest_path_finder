@@ -21,27 +21,13 @@ int** wave_map_init(int height, int width) {
     wave_map[0][0] = 0;
     return wave_map;
 }
-void wave_map_step_for_cave(int** wave_map, cell** map, int height, int width, int i, int j, int wave_counter, int* flag, int* wave_spreading_counter) {
-    if (wave_map[i][j] == wave_counter) {
-        for (int k = -1; k < 2; k++) {
-            for (int l = -1; l < 2; l++) {
-                if ((i+k < 0) || (i+k >= height) || (j+l < 0) || (j+l >= width) || ((l == 0) && (k == 0)) || (map[i+k][j+l] == WALL)) continue;
-                if (wave_map[i+k][j+l] == -1) {
-                    (*wave_spreading_counter)++;
-                    wave_map[i+k][j+l] = wave_counter + 1;
-                    if ((i+k == height - 1) && (j+l == width - 1)) *flag = 1;
-                }
-            }
-        }
-    }
-}
 int wave_map_filling_for_cave(int** wave_map, cell** map, int height, int width) {
     int wave_counter = 0, wave_spreading_counter = 1,flag = 0;
     while ((wave_spreading_counter != 0) && !flag) {
         wave_spreading_counter = 0;
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++) {
-                wave_map_step(wave_map,map,height,width,i,j, wave_counter,&flag,&wave_spreading_counter);
+                wave_map_step_for_cave(wave_map,map,height,width,i,j, wave_counter,&flag,&wave_spreading_counter);
             }
         }
         wave_counter++;
@@ -101,28 +87,26 @@ void wave_algorithm_for_maze(maze_cell*** map, int height, int width){
         int top = 0;
         stack[top] = -1;
         int i = height - 1, j = width - 1;
-        while (wave_map[i][j] != 0) {
-            if ((i == height - 1) && (j == width - 1) && (wave_map[i-1][j] == -1) && (wave_map[i][j-1] == -1)) break;
-            else {
+        while ((wave_map[i][j] != 0) && (!((i == height - 1) && (j == width - 1) && (wave_map[i-1][j] == -1) && (wave_map[i][j-1] == -1)))){
             top++;
             stack[top] = i*width+j;
             int flag = 0;
-            if ((i+1 <= height) && (wave_map[i+1][j] == wave_map[i][j] - 1)) {
+            if ((i+1 < height) && (wave_map[i+1][j] == wave_map[i][j] - 1) && (((*map)[i][j]).bottom != WALL)) {
                 if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
                 i = i+1;
                 flag = 1;
             }
-            else if ((i-1 >= 0) && (wave_map[i][j+1] == wave_map[i][j] - 1)) {
+            else if ((i-1 >= 0) && (wave_map[i-1][j] == wave_map[i][j] - 1) && (((*map)[i-1][j]).bottom != WALL)) {
                 if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
                 i = i-1;
                 flag = 1;
             }
-            else if ((j+1 <= width) && (wave_map[i][j+1] == wave_map[i][j] - 1)) {
+            else if ((j+1 < width) && (wave_map[i][j+1] == wave_map[i][j] - 1) && (((*map)[i][j]).right != WALL)) {
                 if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
                 j = j+1;
                 flag = 1;
             }
-            else if ((j-1 >= 0) && (wave_map[i][j-1] == wave_map[i][j] - 1)) {
+            else if ((j-1 >= 0) && (wave_map[i][j-1] == wave_map[i][j] - 1) && (((*map)[i][j-1]).right != WALL)) {
                 if ((i != height - 1) && (j != width - 1)) wave_map[i][j] = -1;
                 j = j-1;
                 flag = 1;
@@ -133,14 +117,15 @@ void wave_algorithm_for_maze(maze_cell*** map, int height, int width){
                 j = width - 1;
             }
             }
-        }
+        printf("Волны после поиска пути\n");
+        print_waves(wave_map, height, width);
         while ((stack[top] != -1) && (top >= 0)) {
             if (width >= height)((*map)[stack[top]/width][stack[top]%width]).isPartOfPath = PATH;
             else ((*map)[stack[top]/height][stack[top]%height]).isPartOfPath = PATH;
             top--;
         }
         ((*map)[0][0]).isPartOfPath = PATH;
-        maze_print(*map, height, width);
+        maze_path_print(*map, height, width);
         free(stack);
         }
         free_matrix((void***)map, height);
@@ -161,4 +146,47 @@ int wave_map_filling_for_maze(int** wave_map, maze_cell** map, int height, int w
     if (!flag) printf("Путь не найден!\n");
     return flag;
 }
-void wave_map_step_for_maze(int** wave_map, maze_cell** map, int height, int width, int i, int j, int wave_counter, int* flag, int* wave_spreading_counter) {}
+void wave_map_step_for_cave(int** wave_map, cell** map, int height, int width, int i, int j, int wave_counter, int* flag, int* wave_spreading_counter) {
+    if (wave_map[i][j] == wave_counter) {
+        for (int k = -1; k < 2; k++) {
+            for (int l = -1; l < 2; l++) {
+                if ((i+k < 0) || (i+k >= height) || (j+l < 0) || (j+l >= width) || ((l == 0) && (k == 0)) || (map[i+k][j+l] == WALL)) continue;
+                if (wave_map[i+k][j+l] == -1) {
+                    (*wave_spreading_counter)++;
+                    wave_map[i+k][j+l] = wave_counter + 1;
+                    if ((i+k == height - 1) && (j+l == width - 1)) *flag = 1;
+                }
+            }
+        }
+    }
+}
+void wave_map_step_for_maze(int** wave_map, maze_cell** map, int height, int width, int i, int j, int wave_counter, int* flag, int* wave_spreading_counter) {
+    if (wave_map[i][j] == wave_counter) {
+        if ((i+1 < height) && ((map[i][j]).bottom != WALL)) {
+            if (wave_map[i+1][j] == -1) {
+                (*wave_spreading_counter)++;
+                wave_map[i+1][j] = wave_counter + 1;
+                if ((i+1 == height - 1) && (j == width - 1)) *flag = 1;
+            }
+        }
+        if ((i-1 >= 0) && ((map[i-1][j]).bottom != WALL)) {
+            if (wave_map[i-1][j] == -1) {
+                (*wave_spreading_counter)++;
+                wave_map[i-1][j] = wave_counter + 1;
+            }
+        }
+        if ((j+1 < width) && ((map[i][j]).right != WALL)) {
+            if (wave_map[i][j+1] == -1) {
+                (*wave_spreading_counter)++;
+                wave_map[i][j+1] = wave_counter + 1;
+                if ((i == height - 1) && (j + 1 == width - 1)) *flag = 1;
+            }
+        }
+        if ((j-1 >= 0) && ((map[i][j-1]).right != WALL)) {
+            if (wave_map[i][j-1] == -1) {
+                (*wave_spreading_counter)++;
+                wave_map[i][j-1] = wave_counter + 1;
+            }
+        }
+    }
+}
