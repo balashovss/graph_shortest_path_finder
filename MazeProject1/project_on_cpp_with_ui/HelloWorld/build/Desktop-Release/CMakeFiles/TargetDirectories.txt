@@ -1,0 +1,9 @@
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/HelloWorld.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/edit_cache.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/rebuild_cache.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/list_install_components.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/install.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/install/local.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/install/strip.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/HelloWorld_autogen_timestamp_deps.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/build/Desktop-Release/CMakeFiles/HelloWorld_autogen.dir

@@ -160,6 +160,19 @@ CaveProject/fast:
 .PHONY : CaveProject/fast
 
 #=============================================================================
+# Target rules for targets named CaveProjectTests
+
+# Build rule for target.
+CaveProjectTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CaveProjectTests
+.PHONY : CaveProjectTests
+
+# fast build rule for target.
+CaveProjectTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/build
+.PHONY : CaveProjectTests/fast
+
+#=============================================================================
 # Target rules for targets named Experimental
 
 # Build rule for target.
@@ -523,6 +536,30 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+hello_doter.o: hello_doter.cpp.o
+.PHONY : hello_doter.o
+
+# target to build an object file
+hello_doter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/hello_doter.cpp.o
+.PHONY : hello_doter.cpp.o
+
+hello_doter.i: hello_doter.cpp.i
+.PHONY : hello_doter.i
+
+# target to preprocess a source file
+hello_doter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/hello_doter.cpp.i
+.PHONY : hello_doter.cpp.i
+
+hello_doter.s: hello_doter.cpp.s
+.PHONY : hello_doter.s
+
+# target to generate assembly for a file
+hello_doter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/hello_doter.cpp.s
+.PHONY : hello_doter.cpp.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -553,6 +590,7 @@ matrix_funcs.o: matrix_funcs.c.o
 # target to build an object file
 matrix_funcs.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/matrix_funcs.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/matrix_funcs.c.o
 .PHONY : matrix_funcs.c.o
 
 matrix_funcs.i: matrix_funcs.c.i
@@ -561,6 +599,7 @@ matrix_funcs.i: matrix_funcs.c.i
 # target to preprocess a source file
 matrix_funcs.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/matrix_funcs.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/matrix_funcs.c.i
 .PHONY : matrix_funcs.c.i
 
 matrix_funcs.s: matrix_funcs.c.s
@@ -569,6 +608,7 @@ matrix_funcs.s: matrix_funcs.c.s
 # target to generate assembly for a file
 matrix_funcs.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/matrix_funcs.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/matrix_funcs.c.s
 .PHONY : matrix_funcs.c.s
 
 maze_gen_funcs.o: maze_gen_funcs.c.o
@@ -577,6 +617,7 @@ maze_gen_funcs.o: maze_gen_funcs.c.o
 # target to build an object file
 maze_gen_funcs.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/maze_gen_funcs.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/maze_gen_funcs.c.o
 .PHONY : maze_gen_funcs.c.o
 
 maze_gen_funcs.i: maze_gen_funcs.c.i
@@ -585,6 +626,7 @@ maze_gen_funcs.i: maze_gen_funcs.c.i
 # target to preprocess a source file
 maze_gen_funcs.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/maze_gen_funcs.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/maze_gen_funcs.c.i
 .PHONY : maze_gen_funcs.c.i
 
 maze_gen_funcs.s: maze_gen_funcs.c.s
@@ -593,6 +635,7 @@ maze_gen_funcs.s: maze_gen_funcs.c.s
 # target to generate assembly for a file
 maze_gen_funcs.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/maze_gen_funcs.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/maze_gen_funcs.c.s
 .PHONY : maze_gen_funcs.c.s
 
 path_planning_algs.o: path_planning_algs.c.o
@@ -601,6 +644,7 @@ path_planning_algs.o: path_planning_algs.c.o
 # target to build an object file
 path_planning_algs.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/path_planning_algs.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/path_planning_algs.c.o
 .PHONY : path_planning_algs.c.o
 
 path_planning_algs.i: path_planning_algs.c.i
@@ -609,6 +653,7 @@ path_planning_algs.i: path_planning_algs.c.i
 # target to preprocess a source file
 path_planning_algs.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/path_planning_algs.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/path_planning_algs.c.i
 .PHONY : path_planning_algs.c.i
 
 path_planning_algs.s: path_planning_algs.c.s
@@ -617,6 +662,7 @@ path_planning_algs.s: path_planning_algs.c.s
 # target to generate assembly for a file
 path_planning_algs.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/path_planning_algs.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/path_planning_algs.c.s
 .PHONY : path_planning_algs.c.s
 
 # Help Target
@@ -659,6 +705,10 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... CaveProject"
+	@echo "... CaveProjectTests"
+	@echo "... hello_doter.o"
+	@echo "... hello_doter.i"
+	@echo "... hello_doter.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = "/home/semakiller/Рабочий стол/Projects/BMSTU/Maze
 
 # The main recursive "all" target.
 all: CMakeFiles/CaveProject.dir/all
+all: CMakeFiles/CaveProjectTests.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/CaveProject.dir/clean
+clean: CMakeFiles/CaveProjectTests.dir/clean
 clean: CMakeFiles/Experimental.dir/clean
 clean: CMakeFiles/Nightly.dir/clean
 clean: CMakeFiles/Continuous.dir/clean
@@ -127,6 +129,32 @@ CaveProject: CMakeFiles/CaveProject.dir/rule
 CMakeFiles/CaveProject.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProject.dir/build.make CMakeFiles/CaveProject.dir/clean
 .PHONY : CMakeFiles/CaveProject.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/CaveProjectTests.dir
+
+# All Build rule for target.
+CMakeFiles/CaveProjectTests.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles" --progress-num=6,7,8,9,10 "Built target CaveProjectTests"
+.PHONY : CMakeFiles/CaveProjectTests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/CaveProjectTests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles" 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CaveProjectTests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles" 0
+.PHONY : CMakeFiles/CaveProjectTests.dir/rule
+
+# Convenience name for target.
+CaveProjectTests: CMakeFiles/CaveProjectTests.dir/rule
+.PHONY : CaveProjectTests
+
+# clean rule for target.
+CMakeFiles/CaveProjectTests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CaveProjectTests.dir/build.make CMakeFiles/CaveProjectTests.dir/clean
+.PHONY : CMakeFiles/CaveProjectTests.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Experimental.dir

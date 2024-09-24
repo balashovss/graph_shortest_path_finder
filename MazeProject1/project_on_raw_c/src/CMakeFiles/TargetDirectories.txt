@@ -1,4 +1,5 @@
 /home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles/CaveProject.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles/CaveProjectTests.dir
 /home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles/Experimental.dir
 /home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles/Nightly.dir
 /home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/CMakeFiles/Continuous.dir

@@ -62,7 +62,8 @@ CMakeFiles/CaveProject.dir/main.c.o: main.c \
   /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  path_planning_algs.h
+  path_planning_algs.h \
+  matrix_funcs.h
 
 CMakeFiles/CaveProject.dir/matrix_funcs.c.o: matrix_funcs.c \
   /usr/include/stdc-predef.h \

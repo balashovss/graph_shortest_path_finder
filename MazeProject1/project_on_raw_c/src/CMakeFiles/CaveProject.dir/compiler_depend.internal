@@ -64,6 +64,7 @@ CMakeFiles/CaveProject.dir/main.c.o
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h
  /home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/path_planning_algs.h
+ /home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/matrix_funcs.h
 
 CMakeFiles/CaveProject.dir/matrix_funcs.c.o
  /home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/matrix_funcs.c

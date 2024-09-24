@@ -1,0 +1,8 @@
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/HelloWorld.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/edit_cache.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/rebuild_cache.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/list_install_components.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/install.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/install/local.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/install/strip.dir
+/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_cpp_with_ui/HelloWorld/CMakeFiles/HelloWorld_autogen.dir

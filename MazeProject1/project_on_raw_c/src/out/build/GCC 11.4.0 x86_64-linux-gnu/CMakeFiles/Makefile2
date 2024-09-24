@@ -64,6 +64,8 @@ CMAKE_BINARY_DIR = "/home/semakiller/Рабочий стол/Projects/BMSTU/Maze
 
 # The main recursive "all" target.
 all: CMakeFiles/CaveProject.dir/all
+all: CMakeFiles/hello_doter.dir/all
+all: CMakeFiles/hello_doter_tests.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -100,6 +102,8 @@ clean: CMakeFiles/ContinuousTest.dir/clean
 clean: CMakeFiles/ContinuousCoverage.dir/clean
 clean: CMakeFiles/ContinuousMemCheck.dir/clean
 clean: CMakeFiles/ContinuousSubmit.dir/clean
+clean: CMakeFiles/hello_doter.dir/clean
+clean: CMakeFiles/hello_doter_tests.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -855,6 +859,58 @@ ContinuousSubmit: CMakeFiles/ContinuousSubmit.dir/rule
 CMakeFiles/ContinuousSubmit.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/clean
 .PHONY : CMakeFiles/ContinuousSubmit.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/hello_doter.dir
+
+# All Build rule for target.
+CMakeFiles/hello_doter.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_doter.dir/build.make CMakeFiles/hello_doter.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_doter.dir/build.make CMakeFiles/hello_doter.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/CMakeFiles" --progress-num=6,7,8,9,10 "Built target hello_doter"
+.PHONY : CMakeFiles/hello_doter.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/hello_doter.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/CMakeFiles" 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/hello_doter.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/CMakeFiles" 0
+.PHONY : CMakeFiles/hello_doter.dir/rule
+
+# Convenience name for target.
+hello_doter: CMakeFiles/hello_doter.dir/rule
+.PHONY : hello_doter
+
+# clean rule for target.
+CMakeFiles/hello_doter.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_doter.dir/build.make CMakeFiles/hello_doter.dir/clean
+.PHONY : CMakeFiles/hello_doter.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/hello_doter_tests.dir
+
+# All Build rule for target.
+CMakeFiles/hello_doter_tests.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_doter_tests.dir/build.make CMakeFiles/hello_doter_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_doter_tests.dir/build.make CMakeFiles/hello_doter_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/CMakeFiles" --progress-num=11,12,13,14,15 "Built target hello_doter_tests"
+.PHONY : CMakeFiles/hello_doter_tests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/hello_doter_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/CMakeFiles" 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/hello_doter_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/CMakeFiles" 0
+.PHONY : CMakeFiles/hello_doter_tests.dir/rule
+
+# Convenience name for target.
+hello_doter_tests: CMakeFiles/hello_doter_tests.dir/rule
+.PHONY : hello_doter_tests
+
+# clean rule for target.
+CMakeFiles/hello_doter_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_doter_tests.dir/build.make CMakeFiles/hello_doter_tests.dir/clean
+.PHONY : CMakeFiles/hello_doter_tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
