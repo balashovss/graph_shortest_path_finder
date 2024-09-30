@@ -12,4 +12,4 @@
   ![image](https://github.com/user-attachments/assets/cafd1e52-af55-4dd2-b435-18a755f20e19)
 
   To install my console app you can write a ```make all``` in [this directory](/MazeProject1/project_on_raw_c/src/)
-  Also in this directory you can see four files: [main.c](/MazeProject1/project_on_raw_c/src/main.c) [matrix_funcs.c](/MazeProject1/project_on_raw_c/src/matrix_funcs.c) [path_planning_algs.c](/MazeProject1/project_on_raw_c/src/path_planning_algs.c) and [maze_gen_funcs.c](/MazeProject1/project_on_raw_c/src/maze_gen_funcs.c)
+  Also in this directory you can see four files: [main.c](/MazeProject1/project_on_raw_c/src/main.c),[matrix_funcs.c](/MazeProject1/project_on_raw_c/src/matrix_funcs.c), [path_planning_algs.c](/MazeProject1/project_on_raw_c/src/path_planning_algs.c) and [maze_gen_funcs.c](/MazeProject1/project_on_raw_c/src/maze_gen_funcs.c)
