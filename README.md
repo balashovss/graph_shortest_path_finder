@@ -11,4 +11,4 @@
   
   ![image](https://github.com/user-attachments/assets/cafd1e52-af55-4dd2-b435-18a755f20e19)
 
-  To install my console app you can write a ```make all``` in [this directory](/project_on_raw_c/src/)
+  To install my console app you can write a ```make all``` in [this directory](/MazeProject1/project_on_raw_c/src/)
