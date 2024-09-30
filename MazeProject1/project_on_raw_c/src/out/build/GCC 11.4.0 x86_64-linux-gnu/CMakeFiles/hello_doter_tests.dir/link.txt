@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/hello_doter_tests.dir/hello_doter.cc.o CMakeFiles/hello_doter_tests.dir/matrix_funcs.c.o CMakeFiles/hello_doter_tests.dir/maze_gen_funcs.c.o CMakeFiles/hello_doter_tests.dir/path_planning_algs.c.o -o hello_doter_tests  -lgtest -lgtest_main 

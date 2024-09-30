@@ -1,5 +1,0 @@
-if(EXISTS "/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/hello_doter[1]_tests.cmake")
-  include("/home/semakiller/Рабочий стол/Projects/BMSTU/MazeProject1/project_on_raw_c/src/out/build/GCC 11.4.0 x86_64-linux-gnu/hello_doter[1]_tests.cmake")
-else()
-  add_test(hello_doter_NOT_BUILT hello_doter_NOT_BUILT)
-endif()

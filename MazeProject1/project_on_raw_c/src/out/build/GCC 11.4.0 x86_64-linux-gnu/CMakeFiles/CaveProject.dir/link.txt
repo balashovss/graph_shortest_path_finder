@@ -1,1 +1,0 @@
-/usr/bin/gcc -g CMakeFiles/CaveProject.dir/main.c.o CMakeFiles/CaveProject.dir/matrix_funcs.c.o CMakeFiles/CaveProject.dir/maze_gen_funcs.c.o CMakeFiles/CaveProject.dir/path_planning_algs.c.o -o CaveProject 
