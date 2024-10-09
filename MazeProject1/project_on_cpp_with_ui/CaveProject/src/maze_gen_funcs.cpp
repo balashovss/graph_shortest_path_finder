@@ -101,7 +101,7 @@ void generate_maze(void*** map, int height, int width) {
         this_string_to_map(tmp, (maze_cell**)(*map), i, width);
         if (i != height - 2) string_for_next_cycle(tmp, width, &set_count);
         else {
-            string_for_next_cycle(tmp, width, &set_count);
+            //string_for_next_cycle(tmp, width, &set_count);
             last_maze_string(tmp, width, &set_count);
         }
     }
@@ -130,7 +130,7 @@ void string_bottom_wall_add(maze_cell* tmp, int width) {
         int maybe_bottom_wall = rand()%100;
         if (maybe_bottom_wall > 40) {
             int count = 0;
-            for (int k = j; k < width;k++) {
+            for (int k = 0; k < width;k++) {
                 if (((tmp[k]).set == (tmp[j]).set) && ((tmp[k]).bottom != WALL)) count++;
             }
             if (count >= 2) (tmp[j]).bottom = WALL; 

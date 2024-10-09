@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     cave_generating_button = new QPushButton("Generate Cave", this);
     maze_generating_button = new QPushButton("Generate Maze", this);
     path_showing_button = new QPushButton("Show Path", this);
-    entering_button = new QPushButton("Enter", this);
     width_edit = new QTextEdit(this);
     height_edit = new QTextEdit(this);
     maze_widget->setGeometry(0, 0, 800, 800);
@@ -27,8 +26,6 @@ MainWindow::MainWindow(QWidget *parent)
     maze_generating_button->setCheckable(true);
     path_showing_button->setGeometry(800, 600, 200, 100);
     path_showing_button->setCheckable(true);
-    entering_button->setGeometry(800, 900, 200, 100);
-    entering_button->setCheckable(true);
     width_edit->setGeometry(800, 800, 200, 50);
     width_edit->setPlaceholderText("width");
     height_edit->setGeometry(800, 850, 200, 50);
