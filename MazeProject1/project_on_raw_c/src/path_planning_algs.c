@@ -116,9 +116,7 @@ void wave_algorithm_for_maze(maze_cell*** map, int height, int width){
                 i = height - 1;
                 j = width - 1;
             }
-            }
-        printf("Волны после поиска пути\n");
-        print_waves(wave_map, height, width);
+        }
         while ((stack[top] != -1) && (top >= 0)) {
             if (width >= height)((*map)[stack[top]/width][stack[top]%width]).isPartOfPath = PATH;
             else ((*map)[stack[top]/height][stack[top]%height]).isPartOfPath = PATH;

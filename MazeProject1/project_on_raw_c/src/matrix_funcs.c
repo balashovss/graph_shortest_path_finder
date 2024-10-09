@@ -45,7 +45,7 @@ void cave_print(cell** map, int height, int width) {
             if ((j < 0) || (j == width)) printf("|");
             else {
             switch (map[i][j]){ 
-                case WALL: printf("|");
+                case WALL: printf("#");
                 break;
                 case MOVABLE:printf(" ");
                 break;

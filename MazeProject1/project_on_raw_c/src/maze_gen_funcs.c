@@ -136,7 +136,7 @@ void string_bottom_wall_add(maze_cell* tmp, int width) {
         int maybe_bottom_wall = rand()%100;
         if (maybe_bottom_wall > 40) {
             int count = 0;
-            for (int k = j; k < width;k++) {
+            for (int k = 0; k < width;k++) {
                 if (((tmp[k]).set == (tmp[j]).set) && ((tmp[k]).bottom != WALL)) count++;
             }
             if (count >= 2) (tmp[j]).bottom = WALL; 
